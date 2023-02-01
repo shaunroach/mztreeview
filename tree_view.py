@@ -16,6 +16,7 @@ class HtmlNode():
         self.inner_text = ""
         self.attribute_pairs = {}
         self.nodes = []
+        self.indent_level = 0
 
     def set_tag(self, tag):
         self.tag = tag
@@ -27,7 +28,12 @@ class HtmlNode():
         self.attribute_pairs[key] = value
 
     def add_node(self, new_node):
+        new_node.recalculate_indent_level(self.indent_level + 1)
         self.nodes.append(new_node)
+
+    def recalculate_indent_level(self, new_level):
+        self.indent_level = new_level
+        map(lambda x: x.recalculate_indent_level(new_level+1), self.nodes)
 
     def get_attribute_pairs_string(self):
         sorted_keys = sorted(self.attribute_pairs)

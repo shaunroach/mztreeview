@@ -28,3 +28,6 @@ def test_tree_view():
     anode.add_node(bnode)
     test_5_out = anode.print_html()
     assert(test_5_out == "<html version='1'>green<p></p></html>")
+
+    assert(anode.indent_level == 0)
+    assert(bnode.indent_level == 1)
