@@ -63,3 +63,7 @@ class HtmlNode():
             inner_text_string = f"{linebreak_characters}{text_indent_string}{self.inner_text}{linebreak_characters}"
 
         return f"{start_tag}{inner_text_string}{node_text}{end_tag}"
+
+    def html_to_file(self, filename):
+        with open(filename, "w") as f:
+            f.write(self.print_html())

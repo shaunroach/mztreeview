@@ -14,7 +14,7 @@ def test_dummy_interface():
     assert( np.all(values == [1]))
     assert( np.all(policies == [0.25, 0.25, 0.25, 0.25]))
 
-    valid_actions = di.valid_actions_from_policy(policies)
+    valid_actions = di.valid_actions_from_policy(policies[0])
     assert( np.all(valid_actions == [[0], [1], [2], [3]]))
 
     current_estates = np.tile(estate, (len(valid_actions), 1))

@@ -30,7 +30,9 @@ class DummyMuzero(MuZeroInterface):
     def eval_f(self, estates):
         num_dummy_actions = 4
         dummy_values = [1]*len(estates)
-        dummy_policies = [float(1)/num_dummy_actions]*num_dummy_actions
+        dummy_policy = [float(1)/num_dummy_actions]*num_dummy_actions
+        dummy_policies = np.tile(dummy_policy, (len(estates), 1))
+        #estates = np.tile(self.state, (len(self.policy), 1))
         return dummy_values, dummy_policies
 
     def eval_g(self, estates, actions):
